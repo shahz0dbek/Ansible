@@ -1,0 +1,23 @@
+---
+- name: Docker o'rnatish
+  hosts: all
+  become: yes  # Root huquqlari bilan ishlash uchun
+  tasks:
+    - name: Curl yordamida get-docker.sh skriptni yuklash
+      ansible.builtin.get_url:
+        url: https://get.docker.com
+        dest: /tmp/get-docker.sh
+        mode: '0755'  # Skriptni bajariladigan qilib belgilash
+
+    - name: Docker o'rnatish skriptini ishga tushirish
+      ansible.builtin.shell: sh /tmp/get-docker.sh
+      args:
+        executable: /bin/bash
+
+    - name: Docker versiyasini tekshirish
+      ansible.builtin.command: docker --version
+      register: docker_version_output
+
+    - name: Docker versiyasini ko'rsatish
+      ansible.builtin.debug:
+        msg: "{{ docker_version_output.stdout }}"
