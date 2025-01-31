@@ -1,0 +1,12 @@
+---
+- name: Copy file
+  hosts: all
+  become: yes
+
+  vars:
+    source_file: ./index.html
+    destin_file: /var/www/html
+
+  tasks:
+  - name: copy upload file
+    copy: src={{ source_file}} dest={{ destin_file }}  mode=0555
