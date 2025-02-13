@@ -1,0 +1,8 @@
+---
+- name: Set time zone
+  hosts: all
+  become: yes
+  tasks:
+    - name: Set time zone
+      timezone:
+        name: UTC
