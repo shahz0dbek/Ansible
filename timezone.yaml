@@ -5,4 +5,4 @@
   tasks:
     - name: Set time zone
       timezone:
-        name: UTC
+        name: Asia/Tashkent
