@@ -1,13 +1,12 @@
----
 - name: Test Playbook1
   hosts: all
   become: yes
 
   tasks:
-  - name: apt update qilish uchun 
-    apt:
-      update_cache: yes
-  - name: apt upgrade uchun tasks
-    apt:
-      upgrade: dist
-      force_apt_get: yes
+    - name: apt update qilish uchun
+      apt:
+        update_cache: yes
+    - name: apt upgrade uchun tasks
+      apt:
+        upgrade: dist
+        force_apt_get: yes
